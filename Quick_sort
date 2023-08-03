@@ -1,0 +1,48 @@
+//Quick sort
+#include<bits/stdc++.h>
+using namespace std;
+int part(int arr[],int small,int big)
+{
+	int pivot=arr[big];
+	int i=small-1;
+	for(int j=small;j<big-1;j++)
+	{
+		if(arr[j]<pivot)
+		{
+			i++;
+			swap(arr[i],arr[j]);
+			
+		}
+	}
+	swap(arr[i+1],arr[big]);
+	return(i+1);
+	
+	
+}
+void quickSort(int arr[],int small,int big)
+{
+		if(small<big){		
+		int pi=part(arr,big,small);
+		
+        quickSort(arr,small,pi-1);
+		quickSort(arr,pi+1,big);
+}
+}
+int main()
+{
+	int arr[100];
+	int n;
+	cout<<"enter the size of an array is ";
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		cin>>arr[i];
+	}
+	cout<<endl<<" after quick sort the array will be ";
+	quickSort(arr,0,n-1);
+	for(int i=0;i<n;i++)
+	{
+		cout<<arr[i]<<" ";
+	}
+	
+}
