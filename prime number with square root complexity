@@ -1,0 +1,40 @@
+//prime number with complexit o(sqrtn)
+#include<iostream>
+using namespace std;
+bool primenumber(int n)
+{
+	if(n<=1)
+		return false;
+		
+		for(int i=2;i*i<=n;i++)
+		{
+			if(n%i==0)
+			{
+				return false;
+				
+			}
+	
+		}
+		return true;
+}
+int main()
+{
+	int t;
+	cout<<"number of test cases ";
+	cin>>t;
+	while(t--)
+	{
+		int n;
+		cin>>n;
+		cout<<endl;
+		if(primenumber(n))
+		{
+			cout<<"prime number "<<endl;
+		}
+		else
+		{
+			cout<<"not prime number "<<endl;
+		}
+		
+	}
+}
