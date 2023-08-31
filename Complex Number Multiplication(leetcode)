@@ -1,0 +1,90 @@
+class Solution {
+public:
+    string complexNumberMultiply(string s, string t) {
+        int a=0,b=0,x=0,y=0;
+        int idx=0;
+        bool isneg=false;
+        while(s[idx]!='+')
+        {
+            if(s[idx]=='-')
+            {
+                isneg=true;
+            }
+            else if(s[idx]>='0' and s[idx]<='9')
+            {
+                int n=s[idx]-'0';
+                a=a*10+n;
+            }
+            idx++;
+        }
+        if(isneg==true)
+        {
+            a=a*(-1);
+        }
+        isneg=false;
+        idx++;
+        while(idx<s.length())
+        {
+            if(s[idx]=='-')
+            {
+                isneg=true;
+            }
+            else if(s[idx]>='0' and s[idx]<='9')
+            {
+                int n=s[idx]-'0';
+                b=b*10+n;
+            }
+            idx++;
+        }
+        if(isneg==true)
+        {
+            b=b*-1;
+        }
+        isneg=false;
+        idx=0;
+        while(t[idx]!='+')
+        {
+            if(t[idx]=='-')
+            {
+                isneg=true;
+            }
+            else if(t[idx]>='0' and t[idx]<='9')
+            {
+                int n=t[idx]-'0';
+                x=x*10+n;
+            }
+            idx++;
+        }
+        if(isneg==true)
+        {
+            x=x*(-1);
+        }
+        isneg=false;
+        idx++;
+        while(idx<t.length())
+        {
+            if(t[idx]=='-')
+            {
+                isneg=true;
+            }
+            else if(t[idx]>='0' and t[idx]<='9')
+            {
+                int n=t[idx]-'0';
+                y=y*10+n;
+            }
+            idx++;
+        }
+        if(isneg==true)
+        {
+            y=y*-1;
+        }
+        int c=(a*x)-(b*y);
+        int d=(a*y)+(b*x);
+        string ans="";
+        ans.append(to_string(c));
+        ans.push_back('+');
+        ans.append(to_string(d));
+        ans.push_back('i');
+        return ans;
+    }
+};
