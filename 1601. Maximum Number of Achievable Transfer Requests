@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int permits;
+    int maximumRequests(int n, vector<vector<int>>& requests) {
+        permits = 0;
+        vector<int> inDegrees(n, 0);
+        backtrack(0, 0, requests, inDegrees);
+        return permits;
+    }
+    void backtrack(int cur, int noOfPermitsGiven, vector<vector<int>>& requests, vector<int>& inDegrees) {
+        if(cur == requests.size()) {
+            for(int inDegree : inDegrees) {
+                if(inDegree != 0) {
+                 
+                    return;
+                }
+            }
+            permits = max(permits, noOfPermitsGiven);
+            return;
+        }
+
+        inDegrees[requests[cur][0]]--;
+        inDegrees[requests[cur][1]]++;
+        backtrack(cur+1, noOfPermitsGiven+1, requests, inDegrees);
+
+        inDegrees[requests[cur][0]]++;
+        inDegrees[requests[cur][1]]--;
+        backtrack(cur+1, noOfPermitsGiven, requests, inDegrees);
+    }
+};
