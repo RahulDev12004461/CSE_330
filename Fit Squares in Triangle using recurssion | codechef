@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+int calculateN(int b) {
+    if (b <= 2) {
+        return 0;
+    }
+    return b/2 - 1 + calculateN(b - 2);
+}
+
+int main() {
+    int t, n;
+    cin >> t;
+    while (t--) {
+        int b;
+        cin >> b;
+        n = calculateN(b);
+        cout << n << endl;
+    }
+
+    return 0;
+}
+
+/* without using recursion code is down below
+#include<iostream>
+using namespace std;
+int main()
+{
+    
+    int t,n;
+    cin>>t;
+    while(t--)
+    {
+        int b;
+        cin>>b, n=0;
+        while(b>2)
+	    {
+	        n+=b/2-1;
+	        b-=2;
+	    }
+	    cout<<n<<endl;
+        
+    }
+    
+    return 0;
+}
