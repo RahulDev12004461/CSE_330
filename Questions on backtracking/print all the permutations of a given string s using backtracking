@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+
+void swap(char &a, char &b) {
+    char temp = a;
+    a = b;
+    b = temp;
+}
+
+q
+void permute(string s, int left, int right) {
+    if (left == right) {
+        // A permutation is found, so print it
+        cout << s << endl;
+    } else {
+        for (int i = left; i <= right; i++) {
+            // Swap the current character with the first character
+            swap(s[left], s[i]);
+            // Recursively generate permutations for the remaining characters
+            permute(s, left + 1, right);
+            // Restore the original string to backtrack
+            swap(s[left], s[i]);
+        }
+    }
+}
+
+void printAllPermutations(string s) {
+    int n = s.length();
+    permute(s, 0, n - 1);
+}
+
+int main() {
+    string s;
+    cout << "Enter a string: ";
+    cin >> s;
+
+    cout << "All permutations of " << s << " are:" << endl;
+    printAllPermutations(s);
+
+    return 0;
+}
