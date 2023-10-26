@@ -1,0 +1,31 @@
+//there are n stairs a person , standing at the bottom wants to climb stairs
+//to reach the nth stair , the person can climb either one stair or two stair at a time
+//the task is to count the number of ways that a person can reach at the top
+#include <iostream>
+#include <vector>
+using namespace std;
+vector<long long> memo;
+long long countWays(int n) {
+    if (n <= 1) {
+        return 1;
+    }
+    if (memo[n]!=-1) {
+        return memo[n];
+    }
+
+    memo[n]=countWays(n - 1)+countWays(n - 2);
+    return memo[n];
+}
+
+int main() {
+    int n;
+    cout <<"Enter the number of stairs: ";
+    cin >> n;
+
+    memo.assign(n + 1, -1);
+    long long ways = countWays(n);
+
+    cout << "The number of ways to climb "<<n<<" stairs is:" << ways << endl;
+
+    return 0;
+}
